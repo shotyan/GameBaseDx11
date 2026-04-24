@@ -22,7 +22,9 @@ void TestScene::Update()
 {
 	if (Input::IsKeyDown(DIK_SPACE))
 	{
-		SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		//見つからない場合はnullptrが返るので、nullptrでないことを確認してから使う
+		//SceneManager* pSceneManager = (SceneManager*)FindObject("SceneManager");
+		SceneManager* pSceneManager = (SceneManager*) (this->GetParent());
 		pSceneManager->ChangeScene(SCENE_ID_PLAY);
 	}
 }
