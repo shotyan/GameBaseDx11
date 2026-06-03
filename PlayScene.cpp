@@ -1,6 +1,10 @@
 #include "PlayScene.h"
 #include "Engine\\Model.h"
-
+#include "Bullet.h"
+#include "Player.h"
+#include "Enemy.h"
+#include "Engine/SceneManager.h"
+#include "Engine/Camera.h"
 
 PlayScene::PlayScene(GameObject* parent)
 	:GameObject(parent, "PlayScene"),hModel_(-1)
@@ -9,30 +13,27 @@ PlayScene::PlayScene(GameObject* parent)
 
 void PlayScene::Initialize()
 {
-	hModel_ = Model::Load("Oden.fbx");
-	assert(hModel_ >= 0);
+
+	Instantiate<Enemy>(this);  //Enemyのインスタンス＝敵オブジェクトを作る
+	Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーのオブジェクトを作る
+	/*Instantiate<Bullet>(this);*/
+
+	Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーオブジェクトを作る
+	Camera::SetPosition(XMFLOAT3(0.0f, 5.0f, -13.0f));
+	Camera::SetTarget(XMFLOAT3(0.0f, 0.0f, 10.0f));
 }
 
 void PlayScene::Update()
 {
-	if (ot_.position_.x < 10)
-	{
-	    ot_.position_.x += 0.2f;
-    }
-	else if(ot_.position_.x > 10)
-	{
-		ot_.position_.x -= 0.2f;
-	}
-	ot_.position_.y = -2.5f;
-	ot_.position_.z = 5.5f;
-	ot_.scale_ = { 1.0f, 1.0f, 1.0f };
-	ot_.rotate_.y += 0.5f; //回転させる
+	if (FindObject("Enemy") == nullptr) {
+		SceneManager* pSceneManager = (SceneManager*)(this->GetParent());
+		pSceneManager->ChangeScene(SCENE_ID_CLEAR);
+	};
 }
 
 void PlayScene::Draw()
 {
-	Model::SetTransform(hModel_, ot_);
-	Model::Draw(hModel_);
+
 }
 
 void PlayScene::Release()

@@ -2,6 +2,7 @@
 #include "Engine/Image.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
+#include "Player.h"
 
 
 //コンストラクタ
@@ -13,8 +14,10 @@ TestScene::TestScene(GameObject * parent)
 //初期化
 void TestScene::Initialize()
 {
-	hTitlePic_ = Image::Load("Title2.png");
+	hTitlePic_ = Image::Load("taitor.png");
 	assert(hTitlePic_ >= 0);
+	//Instantiate<Player>(this);
+	
 }
 
 //更新
@@ -32,7 +35,7 @@ void TestScene::Update()
 //描画
 void TestScene::Draw()
 {
-	transform_.scale_ = { 1.5f, 1.5f, 1.0f }; //画像の大きさを変更
+	transform_.scale_ = { 1.0f, 1.0f, 1.0f }; //画像の大きさを変更
 	Image::SetTransform(hTitlePic_, transform_); //画像の位置や向きなどを設定
 	Image::Draw(hTitlePic_); //画像を表示
 }
