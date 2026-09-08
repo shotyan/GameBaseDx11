@@ -18,7 +18,7 @@ void PlayScene::Initialize()
 	Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーのオブジェクトを作る
 	/*Instantiate<Bullet>(this);*/
 
-	Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーオブジェクトを作る
+	//Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーオブジェクトを作る
 	Camera::SetPosition(XMFLOAT3(0.0f, 5.0f, -13.0f));
 	Camera::SetTarget(XMFLOAT3(0.0f, 0.0f, 10.0f));
 }
