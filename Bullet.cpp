@@ -14,11 +14,11 @@ Bullet::~Bullet()
 
 void Bullet::Initialize()
 {
-	hModel_ = Model::Load("Ball.fbx");
+	hModel_ = Model::Load("misail2.fbx");
 	assert(hModel_ >= 0);
 	Player* player = (Player*)GetParent();
 	transform_.position_ = player->GetPosition();
-	transform_.scale_ = { 0.5f,0.5f,0.5f };
+	transform_.scale_ = { 1.5f,1.5f,1.5f };
 
 	SphereCollider* collider = new SphereCollider(XMFLOAT3(0.0f, 0.0f, 0.0f), 0.5f);
 	AddCollider(collider);
