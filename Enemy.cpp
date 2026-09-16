@@ -31,7 +31,7 @@ void Enemy::Update()
 	//transform_.position_.x = 6.0f * sin(time);
 	float posx = 6.0 * sin(0.2f * time);
 	//float posy = cos(3.0f * time);
-	transform_.position_.x = posx;
+	transform_.position_.x = startPosition_.x + posx;
 	//tr_.position_.y = posy;
 }
 
@@ -51,4 +51,10 @@ void Enemy::OnCollision(GameObject* pTarget)
 		pTarget->KillMe(); //バレット消す
 		KillMe(); //自分も消す
 	}
+}
+
+void Enemy::SetPosition(XMFLOAT3 position)
+{
+	startPosition_ = position;
+	transform_.position_ = position;
 }

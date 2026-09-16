@@ -14,7 +14,11 @@ PlayScene::PlayScene(GameObject* parent)
 void PlayScene::Initialize()
 {
 
-	Instantiate<Enemy>(this);  //Enemyのインスタンス＝敵オブジェクトを作る
+	Enemy* enemy1 = Instantiate<Enemy>(this);
+	enemy1->SetPosition({ -5.0f, 0.0f, 20.0f });
+
+	Enemy* enemy2 = Instantiate<Enemy>(this);
+	enemy2->SetPosition({ 5.0f, 0.0f, 20.0f });
 	Instantiate<Player>(this); //Playerのインスタンス＝プレイヤーのオブジェクトを作る
 	/*Instantiate<Bullet>(this);*/
 

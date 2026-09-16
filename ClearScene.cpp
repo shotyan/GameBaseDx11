@@ -16,7 +16,11 @@ void ClearScene::Initialize()
 
 void ClearScene::Update()
 {
-
+	if(Input::IsKeyDown(DIK_SPACE))
+	{
+		SceneManager* pSceneManager = (SceneManager*)(this->GetParent());
+		pSceneManager->ChangeScene(SCENE_ID_TEST);
+	}
 }
 
 void ClearScene::Draw()

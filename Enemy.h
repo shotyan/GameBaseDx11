@@ -11,8 +11,11 @@ public:
     void Draw() override;
     void Release() override;
     void OnCollision(GameObject* pTarget);
+
+    void SetPosition(XMFLOAT3 position);
 private:
     int hModel_;
     Transform tr_;
+    XMFLOAT3 startPosition_;
 };
 

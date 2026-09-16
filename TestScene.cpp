@@ -2,7 +2,7 @@
 #include "Engine/Image.h"
 #include "Engine/Input.h"
 #include "Engine/SceneManager.h"
-#include "Player.h"
+
 
 
 //コンストラクタ
